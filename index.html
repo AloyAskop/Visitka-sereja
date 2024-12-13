@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Визитка</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        .card {
+            width: 90%; 
+            max-width: 400px; 
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            background: white;
+            text-align: center;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            position: relative;
+            z-index: 1;
+            font-family: 'Barlow Condensed', sans-serif;
+        }
+
+        .card.dark {
+            background: #333;
+            color: white;
+        }
+
+        .profile-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px; 
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .icons {
+            display: flex;
+            justify-content: center;
+            gap: 10px; 
+        }
+
+        .icons a {
+            color: inherit;
+            text-decoration: none;
+            font-size: 24px;
+            transition: transform 0.2s;
+        }
+
+        .icons a:hover {
+            transform: scale(1.2);
+        }
+
+        .toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            z-index: 2;
+            font-size: 24px;
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #4a90e2, #50e3c2, #9013fe, #b8e0f9);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            z-index: 0;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @media (max-width: 600px) {
+            .profile-img {
+                width: 70px;
+                height: 70px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            .icons a {
+                font-size: 20px;
+                margin: 0 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="toggle" onclick="toggleTheme()">🌑</div>
+    <div class="card">
+        <div class="header">
+            <img src="https://media.stickerswiki.app/gwen_hex_by_demybot/5980588.512.webp" alt="Profile Image" class="profile-img">
+            <h1>Wupkan</h1>
+        </div>
+        <h2>Junior Web-Dev</h2>
+        <p>serejkawinx@gmail.com</p>
+        <div class="icons">
+            <a href="https://github.com/hidekko" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://t.me/NautilusSer" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="https://vk.com/novatocs" target="_blank"><i class="fab fa-vk"></i></a>
+            <a href="https://discord.gg/WKFdhxqm" target="_blank"><i class="fab fa-discord"></i></a>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const card = document.querySelector('.card');
+            body.classList.toggle('dark');
+            card.classList.toggle('dark');
+            const icon = document.querySelector('.toggle');
+            icon.textContent = body.classList.contains('dark') ? '☀️' : '🌑';
+        }
+    </script>
+</body>
+</html>
